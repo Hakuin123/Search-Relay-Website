@@ -164,7 +164,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg shadow-slate-900/20 overflow-hidden bg-white">
               <img
-                src="/src/assets/icons/icon.svg"
+                src="/icon.svg"
                 alt="Search Relay"
                 className="w-full h-full object-cover"
               />
