@@ -91,7 +91,7 @@ export const StepWelcome: React.FC<StepWelcomeProps> = ({
             />
             <div className="relative w-full h-full rounded-3xl flex items-center justify-center shadow-2xl shadow-slate-900/20 transform -rotate-3 overflow-hidden">
               <img
-                src="/src/assets/icons/icon.svg"
+                src="/icon.svg"
                 alt="Search Relay"
                 className="w-full h-full object-cover"
               />

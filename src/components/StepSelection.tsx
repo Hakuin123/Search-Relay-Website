@@ -188,7 +188,7 @@ export const StepSelection: React.FC<StepSelectionProps> = ({
                       return (
                         <img
                           key={i}
-                          src="/src/assets/icons/icon.svg"
+                          src="/icon.svg"
                           alt="Search Relay Icon"
                           className="inline-block w-6 h-6 align-text-bottom mx-1"
                         />
