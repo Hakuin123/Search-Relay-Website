@@ -1,0 +1,11 @@
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #FAFAFA;
+}
+
+/* Hide scrollbar for immersive feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
