@@ -39,6 +39,11 @@ export const StepRelay: React.FC<StepRelayProps> = ({
 }) => {
   const [success, setSuccess] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [animationKey, setAnimationKey] = useState(Date.now());
+
+  useEffect(() => {
+    setAnimationKey(Date.now());
+  }, [browser]);
 
   // Initialize search term from URL or default, and sync to URL
   useEffect(() => {
@@ -94,6 +99,26 @@ export const StepRelay: React.FC<StepRelayProps> = ({
       delete (window as any).__simulateRelaySuccess;
     };
   }, []);
+
+  // 根据当前选择的浏览器获取对应的演示动画路径
+  const getAnimationUrl = (browserType: BrowserType) => {
+    let baseUrl = "";
+    switch (browserType) {
+      case BrowserType.Firefox:
+        // TODO: 准备好 Firefox 动画后，将下面路径中的 Chrome 改为 Firefox
+        baseUrl = new URL("../assets/onboarding/animations/Chrome/切换引擎.webp", import.meta.url).href;
+        break;
+      case BrowserType.Edge:
+        // TODO: 准备好 Edge 动画后，将下面路径中的 Chrome 改为 Edge
+        baseUrl = new URL("../assets/onboarding/animations/Chrome/切换引擎.webp", import.meta.url).href;
+        break;
+      case BrowserType.Chrome:
+      default:
+        baseUrl = new URL("../assets/onboarding/animations/Chrome/切换引擎.webp", import.meta.url).href;
+        break;
+    }
+    return `${baseUrl}?t=${animationKey}`;
+  };
 
   return (
     <motion.div
@@ -214,11 +239,17 @@ export const StepRelay: React.FC<StepRelayProps> = ({
             />
 
             {/* Placeholder for WebP Animation */}
-            <div className="w-full h-56 bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden group border border-slate-200 border-dashed">
-              <span className="text-slate-400 text-sm font-medium z-10">
-                {t.relay.placeholder} ({browser})
-              </span>
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-500 to-transparent"></div>
+            <div className="w-full h-56 bg-slate-50 rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden group border border-slate-200 shadow-inner">
+              <img 
+                key={animationKey}
+                src={getAnimationUrl(browser)}
+                alt={`Relay Demo for ${browser}`}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement?.classList.add('border-dashed');
+                }}
+              />
             </div>
 
             <div className="space-y-6 text-center lg:text-left max-w-md">
