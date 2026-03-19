@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-const Home = lazy(() => import("./pages/Home"));
-const Onboarding = lazy(() => import("./pages/Onboarding"));
+import Home from "./pages/Home";
+import Onboarding from "./pages/Onboarding";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -26,15 +26,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <Suspense
-        fallback={
-          <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
-            Loading...
-          </div>
-        }
-      >
-        <AnimatedRoutes />
-      </Suspense>
+      <AnimatedRoutes />
     </Router>
   );
 }
