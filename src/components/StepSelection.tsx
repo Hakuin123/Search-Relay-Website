@@ -74,15 +74,15 @@ export const StepSelection: React.FC<StepSelectionProps> = ({
     switch (browserType) {
       case BrowserType.Firefox:
         // TODO: 准备好 Firefox 动画后，将下面路径中的 Chrome 改为 Firefox
-        baseUrl = new URL("../assets/onboarding/animations/Chrome/划词搜索.webp", import.meta.url).href;
+        baseUrl = new URL("../assets/onboarding/animations/Chrome/划词搜索.gif", import.meta.url).href;
         break;
       case BrowserType.Edge:
         // TODO: 准备好 Edge 动画后，将下面路径中的 Chrome 改为 Edge
-        baseUrl = new URL("../assets/onboarding/animations/Chrome/划词搜索.webp", import.meta.url).href;
+        baseUrl = new URL("../assets/onboarding/animations/Chrome/划词搜索.gif", import.meta.url).href;
         break;
       case BrowserType.Chrome:
       default:
-        baseUrl = new URL("../assets/onboarding/animations/Chrome/划词搜索.webp", import.meta.url).href;
+        baseUrl = new URL("../assets/onboarding/animations/Chrome/划词搜索.gif", import.meta.url).href;
         break;
     }
     return `${baseUrl}?t=${animationKey}`;
